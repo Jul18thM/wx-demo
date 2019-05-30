@@ -18,7 +18,7 @@
       bind:click="onClose"
     />
   </view>
-  <van-search bind:change="search" ></van-search>
+  <van-search bind:change="search" adjust-position></van-search>
   <view class='van-view' wx:if="{{ name == ''}}">
     <!-- button外包一层view，防止actions动态变化，导致渲染时button被打散 -->
     <button
