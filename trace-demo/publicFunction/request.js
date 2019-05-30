@@ -36,12 +36,17 @@ class request{
                 method: method,
                 success: (res => {
                     if (res.statusCode === 200) {
-                        console.log(res.data)
-                        if(res.data){
-
+                        if(res.data.code === '401'){
+                            app.refreshToken(this.requestAll(url, data, header, method));
+                        }else if(res.data.code === '000000'){
+                            //200: 服务端业务处理正常结束
+                            resolve(res);
+                        }else{
+                            wx.showToast({
+                                title: res.data.message,
+                                icon:'none'
+                            })
                         }
-                        //200: 服务端业务处理正常结束
-                        resolve(res)
                     } else {
                         //其它错误，提示用户错误信息
                         if (this._errorHandler != null) {

@@ -1,4 +1,5 @@
 // pages/mine/index.js
+import publicFunction from '../../publicFunction/request'
 const app = getApp();
 const url = app.globalData.globalUrl;
 // 缓存大小转换 kb mb
@@ -101,22 +102,13 @@ Page({
   getUserInfo(){
     app.getNetWorkType()
     let myThis = this;
-    wx.request({
-      method: "GET",
-      url: url + '/api/user/userInfo',
-      header: getApp().globalData.header,
-      success: function (res) {
-        if ("000000" == res.data.code) {
-          getApp().globalData.userInfo = res.data.result;
-          myThis.setData({
-            user: res.data.result
-          })
-          return;
-        }
-        if (app.globalData.overtime === res.data.code) {
-          app.refreshToken(myThis.getUserInfo())
-        } 
-      }
+    let request = new publicFunction;
+    request.getRequest(url + '/api/user/userInfo',null,getApp().globalData.header,this.getUserInfo()).then(res =>{
+      getApp().globalData.userInfo = res.data.result;
+      myThis.setData({
+        user: res.data.result
+      })
+      return;
     });
   },
   /**
@@ -145,27 +137,6 @@ Page({
       storageSize:'',
       version:''
     })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
 
   /**

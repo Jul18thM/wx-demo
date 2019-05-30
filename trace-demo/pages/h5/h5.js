@@ -52,35 +52,12 @@ Page({
               code: code
             }
             let request = new publicFunction;
-            request.postRequest(url + '/api/queryFake/findCodeList',data,header).then(res => console.log(res.data))
-            // wx.request({
-            //   method:"POST",
-            //   url: url + '/api/queryFake/findCodeList',
-            //   data:{
-            //     lat: latitude,
-            //     lng: longitude,
-            //     code: code
-            //   },
-            //   header: {
-            //     "Authorization": getApp().globalData.header.Authorization,
-            //     "Content-Type": "application/x-www-form-urlencoded"
-            //   },
-            //   success:function(result1){
-            //     if("000000" == result1.data.code){
-            //       result1.data.result.qresult = "合格";
-            //       myThis.setData({
-            //         product: result1.data.result
-            //       })
-            //     }else if(app.globalData.overtime === result1.data.code){
-            //       app.refreshToken(myThis.scan());
-            //     }else{
-            //       wx.showToast({
-            //         title: result1.data.message,
-            //         icon:'none'
-            //       })
-            //     }
-            //   }
-            // })
+            request.postRequest(url + '/api/queryFake/findCodeList',data,header).then(res => {
+              res.data.result.qresult = "合格";
+              myThis.setData({
+                product: res.data.result
+              })
+            })
           },
         })
       }
@@ -93,47 +70,5 @@ Page({
     wx.switchTab({
       url:'/pages/home/index'
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-   
   }
 })

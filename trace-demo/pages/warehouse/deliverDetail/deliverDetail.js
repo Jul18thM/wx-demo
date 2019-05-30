@@ -1,4 +1,5 @@
 import Dialog from "../../../wxcomponents/vant/dist/dialog/dialog";
+import publicFunction from '../../../publicFunction/request'
 // pages/warehouse/deliverDetail/deliverDetail.js
 const app = getApp();
 const url = getApp().globalData.globalUrl;
@@ -84,41 +85,34 @@ Page({
     app.getNetWorkType();
     let that = this;
     let productList;
-    wx.request({
-      method: 'GET',
-      url: url + '/api/bill/getProductInfo/deliver/' + id,
-      header: getApp().globalData.header,
-      success: function (res) {
-        if(app.globalData.overtime === res.data.code){
-          app.refreshToken(that.getProductList())
-        }
-        productList = res.data.result;
-        // 计算之前已扫箱托单码数量
-        for(let index in productList){
-          let scanCodes = productList[index].scanCodeList;
-          for(let i in scanCodes){
-            productList[index].scanCount = productList[index].scanCount;
-            if(scanCodes[i].packLevel === '1'){ // 单品
-              scanCodes[i].scanType = '1';
-            }else if(scanCodes[i].packLevel === '3'){ // 箱
-              scanCodes[i].scanType = '3';
-            }else{ // 托
-              scanCodes[i].scanType = '4';  
-            }
-            delete scanCodes[i].packLevel;
+    let request = new publicFunction;
+    request.getRequest(url + '/api/bill/getProductInfo/deliver/' + id,null,getApp().globalData.header).then(res =>{
+      productList = res.data.result;
+      // 计算之前已扫箱托单码数量
+      for(let index in productList){
+        let scanCodes = productList[index].scanCodeList;
+        for(let i in scanCodes){
+          productList[index].scanCount = productList[index].scanCount;
+          if(scanCodes[i].packLevel === '1'){ // 单品
+            scanCodes[i].scanType = '1';
+          }else if(scanCodes[i].packLevel === '3'){ // 箱
+            scanCodes[i].scanType = '3';
+          }else{ // 托
+            scanCodes[i].scanType = '4';  
           }
+          delete scanCodes[i].packLevel;
         }
-        that.setData({
-          productList: res.data.result,
-        })
       }
+      that.setData({
+        productList: res.data.result,
+      })
     })
   },
-  /// 按钮触摸开始触发的事件
+  // 按钮触摸开始触发的事件
   touchStart: function(e) {
     this.touchStartTime = e.timeStamp
   },
-  /// 按钮触摸结束触发的事件
+  // 按钮触摸结束触发的事件
   touchEnd: function(e) {
     this.touchEndTime = e.timeStamp
   },

@@ -1,6 +1,7 @@
 // pages/warehouse/outOfStock/outOfStock.js
 let url = getApp().globalData.globalUrl;
 const app = getApp();
+import publicFunction from '../../../publicFunction/request'
 Page({
   /**
    * 页面的初始数据
@@ -49,29 +50,22 @@ Page({
   getBillList(){
     app.getNetWorkType();
     let that = this;
-    wx.request({
-      method: 'GET',
-      url: url + '/api/bill/getList/deliver',
-      header: getApp().globalData.header,
-      success: function (res) {
-        if(res.data.code === app.globalData.overtime){
-          app.refreshToken(that.getBillList());
-          return;
-        }
-        let actions = []; // vant ActionSheet上拉菜单数据
-        for(let r in res.data.result){
-            let code =  res.data.result[r].code;
-            actions.push({'name': code})
-        }
-        //将获取的数据放入单号列表
-        that.setData({
-          codeList: res.data.result,
-          list: res.data.result,
-          actions:actions
-        });
+    let request = new publicFunction;
+    request.getRequest(url + '/api/bill/getList/deliver',null, getApp().globalData.header).then(res => {
+      let actions = []; // vant ActionSheet上拉菜单数据
+      for(let r in res.data.result){
+          let code =  res.data.result[r].code;
+          actions.push({'name': code})
       }
+      //将获取的数据放入单号列表
+      that.setData({
+        codeList: res.data.result,
+        list: res.data.result,
+        actions:actions
+      });
     })
   },
+  
   orderDetail(e){ 
     let order = JSON.stringify(e.currentTarget.dataset.code);
     wx.redirectTo({

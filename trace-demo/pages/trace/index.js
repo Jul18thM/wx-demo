@@ -1,5 +1,5 @@
 import Dialog from "../../wxcomponents/vant/dist/dialog/dialog";
-
+import publicFunction from '../../publicFunction/request'
 // pages/trace/index.js
 const app = getApp();
 const url = app.globalData.globalUrl;
@@ -77,84 +77,81 @@ Page({
     app.getNetWorkType();
     let that = this;
     let code = this.data.code;
-    let steps = this.data.steps;
+    let data = {
+      code: code
+    };
     if(code.length<=0){
       Dialog.alert({
         message:'请先输入或扫描二维码信息'
       })
       return;
     }
-    // 初始化
-    steps = [];
     if(code.length <= 0){
       wx.showToast({
         title:'请输入或扫描二维码',
         icon:'none'
       })
     }else{
-      wx.request({
-        method:'GET',
-        url: url + "/api/trace/find",
-        data: {
-          code: code
-        },
-        header:app.globalData.header,
-        success:function(e){
-          if(e.data.code === app.globalData.overtime){
-            app.refreshToken(that.trace())
-            return;
-          }
-          if(e.data.result.length<=0){
-            Dialog.alert({
-              message:'未知二维码'
-            })
-            return;
-          }
-          let codeDetail = e.data.result.codeDetail;
-          if(codeDetail === null){
-            wx.showToast({
-              title:'暂无相关信息',
-              icon:'none'
-            })
-            return;
-          }
-          let codeInfo = e.data.result.codeBase;
-          codeInfo.billCode = codeDetail[codeDetail.length-1].billCode;
-          // 判断单据当前状态
-          if(codeInfo.currentWarehouseId === "-1"){
-            codeInfo.status = "运输中";
-          }else{
-            codeInfo.status = codeDetail[codeDetail.length-1].billStatus;
-          }
-          // 对单据列表按时间戳排序
-          codeDetail = codeDetail.sort((a,b)=>b.date-a.date);
-          // 日期格式转换
-          for(let i in codeDetail){
-            codeDetail[i].date = formatDate(codeDetail[i].date);
-            // 二维码追溯列表
-            let text = '';
-            let desc = '';
-            if(codeDetail[i].billStatus === '已出货'){
-              text = '运输中'
-              desc = codeDetail[i].date;
-              steps.push({text,desc});
-              text = codeDetail[i].billType + '[' + codeDetail[i].sendName + ']' + codeDetail[i].billStatus;
-              desc = codeDetail[i].date;
-              steps.push({text,desc});   
-            }else{
-              text = codeDetail[i].billType + '[' + codeDetail[i].receiveName + ']' + codeDetail[i].billStatus;
-              desc = codeDetail[i].date;
-              steps.push({text,desc});   
-            } 
-          }
-          codeInfo.codeDetail = codeDetail;
-          that.setData({
-            codeInfo:codeInfo,
-            steps:steps
-          })
-        }
-      })
+      let request = new publicFunction;
+      request.getRequest(url + "/api/trace/find",data,app.globalData.header).then(res => {that.traceInfo(res)})  
     }
+  },
+  /**
+   * 追溯详细信息
+   */
+  traceInfo(res){
+    let that = this;
+    let steps = this.data.steps;
+    // 初始化
+    steps = [];
+    if(res.data.result.length<=0){
+      Dialog.alert({
+        message:'未知二维码'
+      })
+      return;
+    }
+    let codeDetail = res.data.result.codeDetail;
+    if(codeDetail === null){
+      wx.showToast({
+        title:'暂无相关信息',
+        icon:'none'
+      })
+      return;
+    }
+    let codeInfo = res.data.result.codeBase;
+    codeInfo.billCode = codeDetail[codeDetail.length-1].billCode;
+    // 判断单据当前状态
+    if(codeInfo.currentWarehouseId === "-1"){
+      codeInfo.status = "运输中";
+    }else{
+      codeInfo.status = codeDetail[codeDetail.length-1].billStatus;
+    }
+    // 对单据列表按时间戳排序
+    codeDetail = codeDetail.sort((a,b)=>b.date-a.date);
+    // 日期格式转换
+    for(let i in codeDetail){
+      codeDetail[i].date = formatDate(codeDetail[i].date);
+      // 二维码追溯列表
+      let text = '';
+      let desc = '';
+      if(codeDetail[i].billStatus === '已出货'){
+        text = '运输中'
+        desc = codeDetail[i].date;
+        steps.push({text,desc});
+        text = codeDetail[i].billType + '[' + codeDetail[i].sendName + ']' + codeDetail[i].billStatus;
+        desc = codeDetail[i].date;
+        steps.push({text,desc});   
+      }else{
+        text = codeDetail[i].billType + '[' + codeDetail[i].receiveName + ']' + codeDetail[i].billStatus;
+        desc = codeDetail[i].date;
+        steps.push({text,desc});   
+      } 
+    }
+    codeInfo.codeDetail = codeDetail;
+    that.setData({
+      codeInfo:codeInfo,
+      steps:steps
+    })
   },
   /**
    * 返回
@@ -164,20 +161,6 @@ Page({
       url:'/pages/home/index'
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -190,7 +173,6 @@ Page({
       steps:[]
     })
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -202,26 +184,5 @@ Page({
       codeInfo:'',
       steps:[]
     })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+  }
 })
