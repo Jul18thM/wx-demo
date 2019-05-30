@@ -1,0 +1,82 @@
+<!--pages/warehouse/returnGoods/returnGoods.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="退货登记 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+<van-dialog id='van-dialog'/>
+  <view class='top panel_top'>
+    <view class='section'>
+      <view class="list-msgg">
+        <!-- 选择退货方 -->
+        <van-cell-group>
+          <van-cell value="{{returnName}}" title="选择退货方" title-width="180rpx" is-link  arrow-direction="down" bind:click="showActionSheet" />
+          <van-field value="{{ address }}" label="退货地址" placeholder="退货地址" disabled="true" class="inputbgd" />
+          <van-field value="{{ tel }}" label="联系电话" placeholder="联系电话" disabled="true" class="inputbgd" />
+          <van-field value="{{ reason }}" label="退货原因" placeholder="退货原因" bind:input="inputReason" />
+        </van-cell-group>
+      </view>
+    </view>
+    
+    <view class='scan-code' style='border-top: 2rpx #ccc solid;'>
+      <view class='scan-code-left'>
+        <text class='fontset'>扫描码</text>
+        <van-notice-bar class="allborder allborderwidth" scrollable="false" text="{{code}}" speed="20"/>
+      </view>
+      <view class='scan-code-right'>
+        <button class='btn-code' bindtap='cancel'>撤销</button>
+        <button class='btn-code' bindtap='reset'>重置</button>
+      </view>
+    </view>
+
+    <!-- 产品信息列表 -->
+    <scroll-view scroll-y="true" class='panel-center'>
+      <view class='select_one' wx:for="{{products}}" wx:key="index">
+        <view class='product' bindtap='showList' data-code='{{item}}'>
+          <view class='product-top'>{{item.name}}</view>
+          <view class='product-center'>
+            <view class='prorow'><view class="iconfont icon-standard"></view>规格：{{item.proSpec}}</view>
+            <view class='prorow'><view class="iconfont icon-shuliang"></view>数量：{{item.scanNum}}单品</view>
+          </view>
+          <view class='product-bottom'>
+            <view class="iconfont icon-yisaomiaochaxun" style='font-size:12px;'></view>已扫：
+            <view class='product-bottom-left'>{{item.scanNum}} 单品</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+<view class='bottom panel-bottom'>
+  <view class="btn-scan-code iconfont icon-yisaoma" bindtap='scanCode' bindlongpress="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd"></view>
+  <button class='btn-all bc_blue' bindtap="confirmReturnGoods">确认退货</button>
+</view>
+<!-- 扫码列表 -->
+<van-dialog use-slot show="{{detail.showModal}}"  bind:confirm="onClose" title="扫码列表">
+          <view class='van-dialog_content'>
+            <view class='van-dialog_content_text' wx:for="{{detail.scanCodeList}}" wx:key="index" wx:for-item="scan">
+              <text class='font-text'>{{scan.code}}</text>
+              <text class='font_gray' style='float:right;' wx:if="{{scan.scanType == '1'}}">单品</text>
+              <text class='font_green' style='float:right;' wx:if="{{scan.scanType == '3'}}">按箱</text>
+              <text class='font_orange' style='float:right;' wx:if="{{scan.scanType == '4'}}">按托</text>
+            </view>
+          </view>
+        </van-dialog>
+        
+<!-- 上拉选择收货单 -->
+ <van-action-sheet
+  title="选择退货方"
+  show="{{show}}"
+  actions="{{ actions }}"
+  action="{{actions}}"
+  bind:select="onSelect"
+  bind:cancel="sheetClose"
+  bind:close="sheetClose"
+  close-on-click-overlay
+ >
+  <!-- <van-search bind:change="searchBill" value=""></van-search> -->
+ </van-action-sheet>

@@ -1,0 +1,29 @@
+/* pages/aboutUs/aboutUs.wxss */
+page {
+  background:#f6f6f6;
+}
+.title {
+  text-align: center;
+  margin: 40rpx 40rpx;
+  padding: 20rpx 40rpx 40rpx 40rpx;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+.title text{
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 120rpx;
+}
+.title .texttop{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  text-align: left;
+  display: flex;
+}
+.title .textbottom{
+  font-size: 24rpx;
+  text-align: right;
+  margin-top: 30rpx;
+  display: flex;
+}

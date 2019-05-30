@@ -1,0 +1,6 @@
+<!--pages/warehouse/index.wxml-->
+<button bindtap='outStock'>经销商出库</button>
+<button bindtap='allocationGoods'>经销商调拨</button>
+<button bindtap='outGoods'>经销商退货</button>
+
+

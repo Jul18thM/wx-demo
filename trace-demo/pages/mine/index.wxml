@@ -1,0 +1,23 @@
+<!--pages/mine/index.wxml-->
+<view>
+  <image class='bgdimg' src='../../image/fxqwe.jpg'></image>
+</view>
+<view class='header'>
+  <view class='set-avatar'></view>
+  <text>{{user.username}}</text>
+  <!-- <rich-text wx:if="{{user.description != '' || user.description != null }}">{{user.description}}</rich-text>
+  <rich-text wx:esle="{{user.description == '' || user.description == null}}">暂无描述</rich-text> -->
+</view>
+
+<!-- <van-cell title="所属机构" icon="location-o" value="{{user.orgName}}" left-icon="contact" size="large" /> -->
+<van-row>
+
+  <!-- <van-cell title="修改密码" icon="edit" is-link to="index" bindtap = 'updateUser'/> -->
+  <van-cell title="清理缓存" icon="replay" value="{{storageSize}}" bindtap='clearStorage' />
+  <van-cell title="关于我们 {{version}}" icon="warning-o" is-link url="/pages/aboutUs/aboutUs" />
+
+  <van-button class='set-button bc_orange' type="danger" bindtap="click" size="large">退出登录</van-button>
+
+</van-row>
+
+<tabbar tabbar="{{tabbar}}"></tabbar>

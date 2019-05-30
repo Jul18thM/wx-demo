@@ -1,0 +1,118 @@
+/* pages/login/index.wxss */
+.bgdimg{
+  width: 100%;
+  height: 600rpx;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.bgdimg::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 600rpx;
+  background:rgba(0,0,0,.5);
+}
+form{
+  line-height: 36px;
+  /* border: 1px solid red;  */
+  padding: 40px;
+  border-radius: 3px;
+  box-shadow:0px 2px 5px 5px #aeaeae;
+  background: #ffffff;
+}
+form text{
+  font-size: 20px;
+  color: #666;
+}
+input{
+  height: 28px;
+  padding: 6px 10px 6px 22px;
+  /* background: #e3e9e3; */
+  color: #727e71;
+  font-size: 12pt;
+  /* border-radius: 3px; */
+  border-bottom: 1px solid #ccc;
+}
+button{
+  border-radius: 50rpx;
+}
+.button{
+  margin-top: 30rpx;
+}
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding: 0 40rpx;
+}
+.header text{
+  font-size: 50rpx;
+  font-weight: bold;
+  line-height: 120rpx;
+  color: #ffffff;
+}
+.header rich-text{
+  font-size: 24rpx;
+  color: #ffffff;
+}
+.fpwd{
+  margin-top: 200rpx;
+}
+.fpwd text{
+  color: #ccc;
+  font-size: 36rpx;
+}
+.section {
+  margin-top: 15rpx;
+  position: relative;
+}
+.button-hover {
+  color:rgba(255, 255, 255, 0.6);
+  background:#6773e3 !important;
+}
+.account-login{
+  text-align: center;
+}
+.account-login text{
+  font-size: 50rpx;
+  color: #333333;
+}
+checkbox-group {
+  align-items: center;
+  justify-content: center;
+}
+/*checkbox 整体大小  */
+checkbox {
+  width: 30rpx;
+  height: 30rpx;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+}
+.checkbox {
+  font-size: 32rpx;
+  color: #666666;
+}
+.bgdimg{
+  width: 100%;
+  height: 600rpx;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.bgdimg::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 600rpx;
+  background:rgba(0,0,0,.5);
+}
+.van-cell {
+  border-bottom: 1px #cccccc solid;
+}

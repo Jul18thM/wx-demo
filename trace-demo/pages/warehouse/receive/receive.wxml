@@ -1,0 +1,58 @@
+<!--pages/warehouse/receive/receive.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="收货确认 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+<!-- 模糊查询 -->
+<!-- <view class='list-msg'>
+      <view class="select_box">
+        <input class='input-search' name="orderCode" bindinput="searchBill">
+          <icon class='input-search-icon' type="search" size="20" />
+        </input>    
+      </view>
+</view> -->
+<view class='top panel_top'>
+<view class='list-msg'>
+    <view class='section'>
+      <van-cell-group>
+        <van-cell title="选择收货单号" title-width="180rpx" is-link value="请选择收货单号" arrow-direction="down" bind:click="showActionSheet" border="{{ false }}" />
+      </van-cell-group>
+    </view>
+</view>
+<!-- 单据列表 -->
+<view class="select_one">
+  <view class="flex-wrp" wx:for="{{codeList}}" wx:key='orderDetail' style="flex-direction:row;">
+    <view class="flex-item bc_leftbox bc_orange" wx:if="{{item.billStatus == '1'}}">待收货</view>
+        <view class="flex-item bc_leftbox bc_orange" wx:else="{{item.billStatus == '2' || order.billStatus == '3'}}">已收货</view>
+    <view class="flex-item bc_rightbox">
+      <text class='bc_text bc_fontmax'><text class="iconfont icon-chuku"></text>{{item.code}}</text>
+      <text class='bc_text'><text class="iconfont icon-yishouhuofangweizhun"></text>{{item.orgName}}</text>
+      <text class='bc_text'><text class="iconfont icon-shouhuofang"></text>{{item.orgAddress}}</text>
+      <text class='bc_text'><text class="iconfont icon-riqi"></text>{{item.createDate}}</text>
+    </view>
+    <view class='bc_rightbtn'>      
+      <van-button size="small" type="info" bindtap='receiveNow' data-id='{{item.id}}'>直接收货</van-button>
+      <van-button size="small" type="warning" class='btn_botton' bindtap='orderBtn' data-bill='{{item}}'>扫码收货</van-button>
+    </view>
+  </view>
+</view>
+</view>
+
+ <!-- 上拉选择收货单 -->
+ <van-action-sheet
+  title="请选择收货单号"
+  show="{{show}}"
+  actions="{{ actions }}"
+  bind:select="onSelect"
+  bind:cancel="sheetClose"
+  bind:close="sheetClose"
+ >
+ <!-- <van-search bind:change="searchBill" value=""></van-search> -->
+ </van-action-sheet>
+
+<van-dialog id="van-dialog"/>
+

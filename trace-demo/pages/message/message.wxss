@@ -1,0 +1,20 @@
+/* pages/message/message.wxss */
+page {
+  background: #f6f6f6;
+}
+.viewimg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6f6;
+}
+.images {
+  width: 480rpx;
+  height: 480rpx;
+}
+.viewimg text {
+  color: #666666;
+}

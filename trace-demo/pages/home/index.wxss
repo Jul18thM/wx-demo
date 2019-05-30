@@ -1,0 +1,96 @@
+/* pages/home/index.wxss */
+.videoCss{
+  width: 100%;
+}
+.bgdimg{
+  width: 100%;
+  height: 400rpx;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.bgdimg::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 400rpx;
+  background:rgba(0,0,0,.5);
+}
+.header {
+  text-align: center;
+  margin-top: 118rpx;
+  padding: 20rpx 40rpx 80rpx 40rpx;
+}
+.header text{
+  font-size: 50rpx;
+  font-weight: bold;
+  line-height: 120rpx;
+  color: #ffffff;
+}
+.header rich-text{
+  font-size: 24rpx;
+  color: #ffffff;
+}
+.bottom{
+  width: 80rpx;
+  height: 80rpx;
+}
+.home-section{
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  padding:0 10rpx;
+}
+.btn{
+  width: 100%;
+  background-color: #f6f6f6;
+  color: #999999;
+  border-radius: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  margin: 20rpx 10rpx 0 10rpx;
+  padding: 10rpx 0;
+}
+.btnImg {
+  width: 50rpx;
+  height: 50rpx;
+}
+.btn::after {
+  border: 0;
+}
+.button-hover {
+  color:rgba(0, 0, 0, 0.6);
+  background-color:#f6f6f6;
+
+}
+.home-icon{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

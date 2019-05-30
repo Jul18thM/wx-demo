@@ -1,0 +1,45 @@
+/* pages/h5/h5.wxss */
+.van-doc-demo-block__title {
+  width: 100%;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(69, 90, 100, 0.6);
+  padding: 15px 15px 15px;
+  display: flex;
+  background: #f6f6f6;
+}
+
+.product-panel {
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+}
+.van-cell-bottom {
+  margin-bottom: 100rpx !important;
+}
+.van-notice-bar {
+  display:-webkit-flex;
+  display:flex;
+  height:auto !important;
+  padding:15px !important;
+  font-size:14px;
+  line-height:24px;
+  -webkit-align-items:center;
+  align-items:left;
+  flex-direction:column;
+}
+.van-notice-bar .font-code {
+  font-size:24rpx;
+  color: 999 !important;
+}
+.van-notice-bar .van-cell {
+  font-size:18px !important;
+  padding:12rpx 0 !important;
+  border-bottom: 0 !important;
+  background-color:transparent !important;
+
+}
+.van-notice-bar .van-cell .van-cell__value {
+  color: 000 !important;
+}

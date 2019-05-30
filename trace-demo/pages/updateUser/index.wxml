@@ -1,0 +1,39 @@
+<!--pages/updateUser/index.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="密码修改 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+<view class='container'>
+  <!-- <view class='header'>
+    <text>密码修改</text>
+  </view> -->
+
+  <form bindsubmit="formSubmit">
+    <van-cell-group>
+      <van-field value="{{ user.username }}" left-icon="manager" disabled border="{{ false }}" />
+      <van-field value="{{ password }}" type="password" left-icon="lock" right-icon="eye-o" placeholder="请输入密码" border="{{ false }}" />
+    </van-cell-group>
+
+    <!-- <view class='section'>
+      <text>用户名：</text>
+      <input placeholder='请输入用户账号' name="username" value='{{user.username}}'/>
+    </view>
+    <view class='section'>
+      <text>密码:</text>
+      <input password='true' placeholder='请输入用户密码' name="password"/>
+    </view> -->
+
+    <van-button size="large" type='warning' form-type='submit'>保存</van-button>
+
+    <!-- <view class='button'>
+      <button type='primary' form-type='submit'>保存</button>
+    </view>
+    <view>
+      <navigator url="../mine/index" open-type="switchTab">返回</navigator>
+    </view> -->
+  </form>
+</view>

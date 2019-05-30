@@ -1,0 +1,98 @@
+<!--pages/warehouse/noCodeDeliver/noCodeDeliver.wxml-->
+<!-- 无出库单出库 -->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="出库管理 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+
+<van-dialog id='van-dialog'/>
+
+<view class='top panel_top'>
+  <view class="section">
+    <!-- 选择出库方 -->
+    <view class='list-msgg'>
+      <van-cell-group>
+        <van-cell value="{{ receiveName }}" title="选择收货方" title-width="180rpx" is-link arrow-direction="down" bind:click="showActionSheet" />
+        <van-field value="{{ receiveTel }}" label="联系电话" disabled placeholder="联系电话" class="inputbgd" />
+        <van-field value="{{ receiveAddress }}" label="收货地址" disabled placeholder="收货地址" class="inputbgd" />
+      </van-cell-group>
+    </view>
+  </view>
+  <view class='scan-code' style='border-top: 2rpx #ccc solid;'>
+    <view class='scan-code-left'>
+      <text class='fontset'>扫描码</text>
+      <van-notice-bar class="allborder allborderwidth" scrollable="false" text="{{code}}" speed="20"/>
+    </view>
+    <view class='scan-code-right'>
+      <button class='btn-code' bindtap='cancel'>撤销</button>
+      <button class='btn-code' bindtap='reset'>重置</button>
+    </view>
+  </view>
+
+  <!-- 产品信息列表 -->
+  <scroll-view scroll-y="true" class='panel-center'>
+    <view class='select_one' wx:for="{{products}}" wx:key="index">
+      <view class='product' bindtap='showList' data-code='{{item}}'>
+        <view class='product-top'>{{item.name}}</view>
+        <view class='product-center'>
+          <view class='prorow'><view class="iconfont icon-standard"></view>规格：{{item.proSpec}}</view>
+          <view class='prorow'><view class="iconfont icon-shuliang"></view>数量：{{item.scanNum}}</view>
+        </view>
+        <view class='product-bottom'>
+          <view class="iconfont icon-yisaomiaochaxun" style='font-size:12px;'></view>已扫：
+          <view class='product-bottom-left'>{{item.scanNum}} 单品</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <van-dialog
+    use-slot
+    show="{{ showInfo }}"
+    title="产品码剔除"
+    confirm-button-text='确认剔除'
+    cancel-button-text='我再想想'
+    bind:confirm='eliminate'
+    show-cancel-button
+    bind:cancel='close'
+  >
+    <text class='van-dialog_text'>只能剔除未上传产品码</text>
+    <van-field  placeholder="扫描或输入" value="{{eliminateCode}}" icon='scan' bind:click-icon="scan" bind:change="getEliminateCode"/>
+  </van-dialog>
+
+  <view class='bottom panel-bottom'>
+    <view class="btn-scan-code iconfont icon-yisaoma" bindtap='scanCode' bindlongpress="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd"></view>
+    <button class='btn-all bc_red' bindtap="show">剔除</button>
+    <button class='btn-all bc_blue' bindtap="upload">确认出库</button>
+  </view>
+
+</view>
+
+
+<van-action-sheet
+    show="{{show}}"
+    actions="{{ actions }}" 
+    bind:close="sheetClose"
+    bind:select="onSelect"
+    bind:cancel="sheetClose"
+    title="请选择出库方"
+    search="searchReceiver"
+>
+  <!-- <van-search bind:change="searchReceiver" value=""></van-search> -->
+</van-action-sheet>
+
+ <!-- 产品信息列表 -->
+  <van-dialog use-slot show="{{detail.showModal}}"  bind:confirm="onClose" title="扫码列表"  >
+        <view class='van-dialog_content'>
+          <view class='van-dialog_content_text' wx:for="{{detail.scanCodeList}}" wx:key="index" wx:for-item="scan">
+            <text class='font-text'>{{scan.code}}</text>
+            <text class='font_gray' style='float:right;' wx:if="{{scan.scanType == '1'}}">单品</text>
+            <text class='font_green' style='float:right;' wx:if="{{scan.scanType == '3'}}">按箱</text>
+            <text class='font_orange' style='float:right;' wx:if="{{scan.scanType == '4'}}">按托</text>
+          </view>
+        </view>
+  </van-dialog>

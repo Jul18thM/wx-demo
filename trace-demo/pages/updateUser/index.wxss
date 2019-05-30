@@ -1,0 +1,45 @@
+/* pages/updateUser/index.wxss */
+form{
+  width: 310px;
+  height: 240px;
+  line-height: 40px;
+  /* border: 1px solid red;  */
+}
+.container {
+  padding:70rpx 20rpx;
+
+}
+
+input{
+  border: 1px solid #ccc;
+  width: 310px;
+  height: 40px;
+}
+.button{
+  margin-top: 20px;
+}
+.header text{
+  font-size: 25px;
+  color: #666;
+}
+form text{
+  font-size: 20px;
+  color: #666;
+}
+.fpwd{
+  margin-top: 200px;
+}
+.fpwd text{
+  color: #ccc;
+  font-size: 18px;
+}
+.van-cell {
+  margin-top: 20rpx;
+  background: #e3e7e9 !important;
+}
+.van-button {
+  margin-top: 30rpx;
+}
+.van-icon {
+  color: #7f818b;
+}

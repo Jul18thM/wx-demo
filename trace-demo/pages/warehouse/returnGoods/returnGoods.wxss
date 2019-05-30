@@ -1,0 +1,199 @@
+/* pages/warehouse/returnGoods/returnGoods.wxss */
+page {
+  background: #f6f6f6;
+}
+.btn{
+  width: 80px;
+  height: 35px;
+  background: #44b549;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  margin:20px auto;
+  border-radius: 100px;
+}
+.btn-code{
+  width: 60px;
+  height: 32px;
+  background: #ffd100;
+  border: 0;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 2px;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10rpx;
+  padding: 0;
+}
+
+/* 遮罩层 */
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.5;
+}
+
+/* 弹出层 */
+.modalDlg{
+  width: 90%;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius:5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 弹出层里面的图片 */
+.modalDlg image{
+  width: 120px;
+  height: 120px;
+  margin-top: 30px;
+}
+
+/* 弹出层里面的按钮 */
+.ok{
+  width: 80px;
+  height: 35px;
+  background: #44b549;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  margin:20px auto;
+  border-radius: 100px;
+}
+
+/* 弹出层里面的文字 */
+.text{
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+  width: 180px;
+  margin-top: 10px;
+}
+
+.van-dialog__header {
+  padding-top:30rpx !important;
+  padding-bottom: 20rpx;
+  font-size: 40rpx;
+  font-weight:500;
+  text-align:center;
+  border-bottom: 1px #cccccc solid;
+}
+.van-dialog_content {
+  max-height:800rpx;
+  overflow-y:auto;
+}
+.van-dialog_content_text {
+  margin: 0 20rpx;
+  padding: 12rpx 0;
+  border-bottom: 1px #cccccc dashed;
+}
+.van-dialog_text {
+  font-size: 28rpx;
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-cell {
+  /* margin: 0rpx;
+  padding:16rpx !important; */
+  border: 1px #cccccc solid;
+}
+.van-cell .van-icon {
+  font-size:22px !important;
+}
+
+.list-msg {
+  background-color: #fff;
+}
+.list-msg .list-msg2 {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10rpx;
+}
+.list-msgg {
+  width: 100%;
+  flex-direction:row;
+  display: inline-block;
+  border-bottom: 1px #cccccc sloid;
+}
+.list-msgg .van-cell {
+  margin: 0rpx;
+  padding:20rpx 30rpx;
+  border: 0rpx #cccccc solid;
+}
+.list-msgg1 {
+  font-size: 28rpx;
+}
+.list-msgg2 {
+  font-size: 28rpx;
+  line-height: 52rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  border-bottom:1px #ccc solid;
+}
+.list-msgg2 text {
+  max-width:90px;
+  min-width:90px;
+}
+.input-search{
+  border: 1rpx solid #ccc;
+  padding: 6rpx;
+  margin: 20rpx 10rpx 10rpx 10rpx;
+  background: #fff;
+}
+.input-search-icon{
+  position: absolute;
+  top:34rpx;
+  right:34rpx;
+}
+.select_box {
+  background-color: #eee;
+  padding: 0 10rpx;
+  width: 92%;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  animation: myfirst 0.5s;
+}
+.select_down {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display:inline-block;
+  padding: 12rpx 10rpx;
+  font-weight: 200;
+  font-size: 28rpx;
+}
+.van-cell__value {
+  text-align: left !important;
+}
+.van-search__content {
+  padding-left:0 !important;
+  margin-left:20rpx;
+}

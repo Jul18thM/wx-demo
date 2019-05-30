@@ -1,0 +1,53 @@
+<!--pages/warehouse/outOfStock/outOfStock.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="出库管理 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+<!-- 模糊查询 -->
+<!-- <view class='list-msg'>
+      <view class="select_box">
+        <input class='input-search' name="orderCode" bind:input="searchBill">
+          <icon class='input-search-icon' type="search" size="20" />
+        </input>    
+      </view>
+</view> -->
+<view class='top panel_top'>
+<view class='list-msg'>
+    <view class='section'>
+      <van-cell-group>
+        <van-cell value="{{ receiveName }}" title="选择出库单号" title-width="180rpx" is-link value="选择出库单号" arrow-direction="down" bind:click="showActionSheet" border="{{ false }}" />
+      </van-cell-group>
+    </view>
+</view>
+<!-- 单据列表 -->
+<view class="select_one">
+  <view class="flex-wrp" wx:for="{{codeList}}" wx:key='orderDetail' bindtap='orderDetail' data-code='{{item}}' style="flex-direction:row;">
+    <text wx:if="{{item.billStatus == '1'}}" class="flex-item bc_leftbox bc_red">未审核</text>
+    <text wx:elif="{{item.billStatus == '2'}}" class="flex-item bc_leftbox bc_blue">已审核</text>
+    <text wx:elif="{{item.billStatus == '3'}}" class="flex-item bc_leftbox bc_red">已拒绝</text>
+    <text wx:elif="{{item.billStatus == '4'}}" class="flex-item bc_leftbox bc_orange">出货中</text>
+    <text wx:else="{{item.billStatus == '5'}}" class="flex-item bc_leftbox bc_green">已出库</text>
+    <view class="flex-item bc_rightbox">
+      <text class='bc_text bc_fontmax'><text class="iconfont icon-chuku"></text>{{item.code}}</text>
+      <text class='bc_text'><text class="iconfont icon-yishouhuofangweizhun"></text>{{item.orgName}}</text>
+      <text class='bc_text'><text class="iconfont icon-shouhuofang"></text>{{item.orgAddress}}</text>
+      <text class='bc_text'><text class="iconfont icon-riqi"></text>{{item.createDate}}</text>
+    </view>
+  </view>
+</view>
+</view>
+<!-- 上拉选择出库单 -->
+ <van-action-sheet
+  title="请选择收货单号"
+  show="{{show}}"
+  actions="{{ actions }}"
+  bind:select="onSelect"
+  bind:cancel="sheetClose"
+  bind:close="sheetClose"
+ >
+  <!-- <van-search bind:change="searchBill" value=""></van-search> -->
+ </van-action-sheet>

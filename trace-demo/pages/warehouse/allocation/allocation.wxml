@@ -1,0 +1,59 @@
+<!--pages/warehouse/allocation/allocation.wxml调拨页面-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="调拨管理 " left-arrow size="48rpx" style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+<!-- 模糊查询 -->
+<!-- <view class='list-msg'>
+      <view class="select_box">
+        <input class='input-search' name="orderCode" bindinput="searchBill">
+          <icon class='input-search-icon' type="search" size="20" />
+        </input>    
+      </view>
+</view> -->
+<view class='top panel_top'>
+    <view class='list-msg'>
+    <view class='section'>
+      <van-cell-group>
+        <van-cell title="选择调拨单号" title-width="180rpx" is-link value="选择调拨单号" arrow-direction="down" bind:click="showActionSheet" border="{{ false }}"/>
+      </van-cell-group>
+    </view>
+</view>
+ <!-- <input class='input-search' name="orderCode" bindinput='inputOrder' bindfocus='firstClick' value='{{order}}' >
+          <image class='input-search-icon' src='../../../icon/search.png'></image>
+          <icon class='input-search-icon' type="search" size="20" />
+        </input> -->
+<!-- 单据列表 -->
+<view class="select_one">
+  <view class="flex-wrp" wx:for="{{orderList}}" wx:key='code' bindtap='orderBtn' data-billStatus='{{item.billStatus}}' data-code='{{item}}' data-code='{{item.code}}' data-orgName='{{item.orgName}}' data-orgAddress='{{item.orgAddress}}' data-createDate='{{item.createDate}}' data-id='{{item.id}}' style="flex-direction:row;">
+    <text wx:if="{{item.billStatus == '1'}}" class="flex-item bc_leftbox bc_red">未审核</text>
+    <text wx:elif="{{item.billStatus == '2'}}" class="flex-item bc_leftbox bc_blue">已审核</text>
+    <text wx:elif="{{item.billStatus == '3'}}" class="flex-item bc_leftbox bc_red">已拒绝</text>
+    <text wx:elif="{{item.billStatus == '4'}}" class="flex-item bc_leftbox bc_orange">调拨中</text>
+    <text wx:else="{{item.billStatus == '5'}}" class="flex-item bc_leftbox bc_green">已调拨</text> 
+    <view class="flex-item bc_rightbox">
+      <text class='bc_text bc_fontmax'><text class="iconfont icon-chuku"></text>{{item.code}}</text>
+      <text class='bc_text'><text class="iconfont icon-yishouhuofangweizhun"></text>{{item.orgName}}</text>
+      <text class='bc_text'><text class="iconfont icon-shouhuofang"></text>{{item.orgAddress}}</text>
+      <text class='bc_text'><text class="iconfont icon-riqi"></text>{{item.createDate}}</text>
+    </view>
+  </view>
+</view>
+</view>
+
+
+<!-- 上拉选择调拨单 -->
+ <van-action-sheet
+  title="请选择调拨单号"
+  show="{{show}}"
+  actions="{{ actions }}"
+  bind:select="onSelect"
+  bind:close="sheetClose"
+  bind:cancel="sheetClose"
+ >
+  <!-- <van-search bind:change="searchBill" value=""></van-search> -->
+ </van-action-sheet>

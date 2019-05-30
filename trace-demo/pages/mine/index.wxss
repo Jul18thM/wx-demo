@@ -1,0 +1,58 @@
+/* pages/mine/index.wxss */
+.bgdimg{
+  width: 100%;
+  height: 400rpx;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.bgdimg::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 400rpx;
+  background:rgba(0,0,0,.3);
+}
+.header {
+  text-align: center;
+  margin-top: 118rpx;
+  padding: 20rpx 40rpx 20rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.set-avatar {
+  width:140rpx;
+  height:140rpx;
+  border-radius:50%;
+  border-top:2rpx solid #f2f2f3;
+  background-color:#fff;
+  text-align:center;
+  box-sizing:border-box;
+  padding:6rpx;
+  display: flex;
+}
+
+.header text{
+  position: relative;
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 70rpx;
+  color: #ffffff;
+  display: flex;
+}
+.header rich-text{
+  width: 100%;
+  font-size: 24rpx;
+  color: #ffffff;
+}
+.set-button {
+  display: flex;
+  margin-top: 80rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+}

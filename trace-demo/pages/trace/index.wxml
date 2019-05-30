@@ -1,0 +1,38 @@
+<!--pages/trace/index.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="追溯 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+
+
+<view class='back_scan' bindtap="scanCode" type="warning"><van-icon name="scan" size="36" /></view>
+<van-search value="{{ code }}" placeholder="扫描或输入条码" bind:search="trace" use-action-slot bind:change="writeIn">
+  <view slot="action" bind:tap="trace">搜索</view>
+</van-search>
+
+<view class='product-panel'>
+  <!-- 当前扫码信息 -->
+  <view class='scan-panel_top' wx:if="{{codeInfo != ''}}">
+    <text>当前查询码：{{codeInfo.code}}\n</text>
+    <text>产品名称：{{codeInfo.productName}}\n</text>
+    <text>所属单号：{{codeInfo.billCode}} \n</text>
+    <text>当前状态：{{codeInfo.status}}</text>
+  </view>
+  <view  wx:if="{{steps != ''}}">
+    <van-steps class='scan-panel_bottom'
+            steps="{{ steps }}"
+            active="{{ active }}"
+            direction="vertical"
+    />
+
+  </view>
+ 
+</view>
+<van-dialog id='van-dialog'/>
+<tabbar tabbar="{{tabbar}}"></tabbar>
+
+

@@ -1,0 +1,34 @@
+/* pages/trace/index.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+.van-search__action {
+  background: #e2e2e2;
+}
+.product-panel {
+  padding: 20rpx;
+  background: #f6f6f6;
+  height: 78%;
+  line-height: 100%;
+}
+.scan-panel_top {
+  padding: 20rpx;
+  font-size: 24rpx;
+  background: #FFFFFF;
+}
+.scan-panel_bottom {
+  display: flex;
+  margin-top:18rpx;
+}
+.van-steps {
+  width: 100%;
+  padding: 20rpx;
+}
+.van-search .van-cell {
+  padding:5px 10px 5px 0 !important;
+}
+
+.van-search {
+  padding-left: 0rpx !important;
+}

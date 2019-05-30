@@ -1,0 +1,86 @@
+ {
+  "pages": [
+    "pages/login/index",
+    "pages/warehouse/returnGoods/returnGoods",
+    "pages/mine/index",
+    "pages/home/index",
+    "pages/warehouse/index",
+    "pages/updateUser/index",
+    "pages/trace/index",
+    "pages/warehouse/outOfStock/outOfStock",
+    "pages/warehouse/deliverDetail/deliverDetail",
+    "pages/warehouse/noCodeDeliver/noCodeDeliver",
+    "pages/warehouse/allocation/allocation",
+    "pages/warehouse/allocation/allocationScanCode/allocationScanCode",
+    "pages/h5/h5",
+    "pages/aboutUs/aboutUs",
+    "pages/message/message",
+    "pages/warehouse/receive/receive",
+    "pages/warehouse/receive/receiveScan/receiveScan"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查询二维码信息"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#515151",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home_fill.png"
+      },
+      {
+        "pagePath": "pages/warehouse/index",
+        "text": "仓库",
+        "iconPath": "icon/warehouse.png",
+        "selectedIconPath": "icon/warehouse_fill.png"
+      },
+      {
+        "pagePath": "pages/trace/index",
+        "text": "追溯",
+        "iconPath": "icon/track.png",
+        "selectedIconPath": "icon/track_fill.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "icon/message.png",
+        "selectedIconPath": "icon/message_fill.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "设置",
+        "iconPath": "icon/setting.png",
+        "selectedIconPath": "icon/setting_fill.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-search": "/wxcomponents/vant/dist/search/index",
+    "van-popup": "/wxcomponents/vant/dist/popup/index",
+    "van-button": "/wxcomponents/vant/dist/button/index",
+    "van-icon": "/wxcomponents/vant/dist/icon/index",
+    "van-dialog": "/wxcomponents/vant/dist/dialog/index",
+    "van-field": "/wxcomponents/vant/dist/field/index",
+    "van-steps": "/wxcomponents/vant/dist/steps/index",
+    "van-swipe-cell": "/wxcomponents/vant/dist/swipe-cell/index",
+    "van-switch": "/wxcomponents/vant/dist/switch/index",
+    "van-cell": "/wxcomponents/vant/dist/cell/index",
+    "van-nav-bar": "/wxcomponents/vant/dist/nav-bar/index",
+    "van-notice-bar": "/wxcomponents/vant/dist/notice-bar/index",
+    "van-tag": "/wxcomponents/vant/dist/tag/index",
+    "van-action-sheet": "/wxcomponents/vant/dist/action-sheet/index"
+  }
+}

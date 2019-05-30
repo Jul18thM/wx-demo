@@ -1,0 +1,49 @@
+<!--pages/h5/h5.wxml-->
+
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="扫码查询结果 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+
+<view class='top panel_top'>
+  <van-cell-group style="overflow-y:auto;padding-bottom:170rpx;">
+    <!-- <van-notice-bar text='当前追溯码（{{product.code}}）由山东先达产品质量追溯系统提供'></van-notice-bar> -->
+    <view class='van-notice-bar'>
+      <text class="font-code">当前追溯码</text>
+      <van-cell value="{{product.code}}" />
+      <text class='font-code'>由山东先达产品质量追溯系统提供</text>
+      <view class='font-code' style="flex-direction:row;">该追溯码为
+        <b id="active" style="color: #e81e63;">
+          <text wx:if="{{product.activate == '1'}}">已激活</text>
+          <text wx:else > 未激活 </text></b>状态。
+      </view>
+    </view>
+
+    <h2 class="van-doc-demo-block__title">农药产品信息</h2>
+    <van-cell title="登记证号" value="{{product.registrationNo}}" />
+    <van-cell title="产品名称" value="{{product.productName}}" />
+    <van-cell title="规格" value="{{product.proSpec}}" />
+    <van-cell title="登记证持有人" value="{{product.businessName}}" />
+    <van-cell title="剂型" value="见包装" />
+    <van-cell title="毒性" value="见包装" />
+
+    <h2 class="van-doc-demo-block__title">生产信息</h2>
+    <van-cell title="生产日期" value="{{product.packDateStr}}" />
+    <van-cell title="生产批号" value="{{product.batchCode}}" />
+    <van-cell title="质检结果" value="{{product.qresult}}" />
+
+    <h2 class="van-doc-demo-block__title">扫码记录</h2>
+    <van-cell title="追溯码" value="{{product.code}}" />
+    <van-cell class="van-cell-bottom" title="查询次数" value="{{product.qty}}" />
+
+    <!-- <h2 class="van-doc-demo-block__title">物流信息</h2>
+    <van-cell title="收货信息" value="{{product.code}}" /> -->
+
+  </van-cell-group>
+</view>
+
+<tabbar tabbar="{{tabbar}}"></tabbar>

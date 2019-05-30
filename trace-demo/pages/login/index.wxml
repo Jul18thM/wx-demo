@@ -1,0 +1,30 @@
+<!--pages/login/index.wxml-->
+<image class='bgdimg' src='../../image/fxqwe.jpg'></image>
+<view class='container'>
+  <view class='header'>
+    <text>Sierac产品追溯系统</text>
+    <rich-text>帮助企业实现产品原材料、生产流通、终端消费等供应链各环节的管理可视化</rich-text>
+  </view>
+  <form bindsubmit="login">
+    <view class='account-login'>
+      <text>账号登录</text>
+    </view>
+
+    <van-field name="username" value="{{ username }}" placeholder='请输入用户账号' left-icon="manager" border="{{ false }}" />
+    <van-field name="password" value="{{ password }}" password="{{inputType}}" left-icon="lock" right-icon="{{icon}}" placeholder="请输入用户密码" border="{{ false }}" bind:click-icon="showOrHidden" />
+  
+    <view class='section'>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox">
+          <checkbox value="remember" checked="{{checked}}" />
+          记住密码
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='button'>
+      <button style='background:#6773e3' type='primary' form-type='submit'>登录</button>
+    </view>
+  </form>
+</view>
+<!-- 弹窗提示模块使用 -->
+<van-dialog id="van-dialog" />

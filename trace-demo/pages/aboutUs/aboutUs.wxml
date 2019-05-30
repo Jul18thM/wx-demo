@@ -1,0 +1,29 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="关于我们 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+
+<view class='title'>
+  <text>Sierac产品追溯系统</text>
+  <rich-text class='texttop'>常州思瑞科信息科技有限公司专注于产品追溯领域的深入研究,为客户打造最专注的产品追溯解决方案</rich-text>
+  <rich-text class='textbottom'>版本：{{version}}</rich-text>
+  <rich-text class='textbottom'>电脑访问官网：https://www.sierac.net\</rich-text>
+</view>
+
+<!-- <view>
+    <view>
+        <van-text>Sierac产品追溯系统</van-text>
+    </view>
+    <view>
+        <text>常州思瑞科信息科技有限公司专注于产品追溯领域的\n</text>
+        <text>深入研究,为客户打造最专注的产品追溯解决方案\n</text>
+        <text>V.1.0\n</text>
+        <text>电脑访问官网\n</text>
+        <text>https://www.sierac.net\n</text>
+    </view>
+</view> -->

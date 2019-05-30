@@ -1,0 +1,71 @@
+/* pages/warehouse/receive/receive.wxss */
+page {
+  background: #f6f6f6;
+}
+.list-msg {
+  padding: 20rpx;
+  background-color: #fff;
+  width: 100%;
+  box-sizing:border-box;
+}
+
+.list-msg1 {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-msg .list-msg2 {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10rpx;
+}
+.input-search{
+  border: 1rpx solid #ccc;
+  padding: 6rpx;
+  margin: 20rpx 10rpx 10rpx 10rpx;
+  background: #fff;
+}
+.input-search-icon{
+  position: absolute;
+  top:34rpx;
+  right:34rpx;
+}
+.select_box {
+  background-color: #eee;
+  padding: 0 10rpx;
+  width: 92%;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  animation: myfirst 0.5s;
+}
+.select_down {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display:inline-block;
+  padding: 12rpx 10rpx;
+  font-weight: 200;
+  font-size: 28rpx;
+}
+@keyframes myfirst {
+  from {
+    height: 0rpx;
+  }
+
+  to {
+    height: 210rpx;
+  }
+}
+.van-cell {
+  border: 1px #cccccc solid;
+}
+.select_one {
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom:170rpx;
+}

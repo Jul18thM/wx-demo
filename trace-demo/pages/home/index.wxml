@@ -1,0 +1,31 @@
+<!--pages/home/index.wxml-->
+<view style='display:flex'>
+  <image class='bgdimg' src='../../image/fxqwe.jpg'></image>
+</view>
+<view class='header'>
+  <text>Sierac产品追溯系统</text>
+  <rich-text>帮助企业实现产品原材料、生产流通、终端消费等供应链各环节的管理可视化</rich-text>
+</view>
+<view class='top panel_top'>
+  <view class="home-section">
+    <button class='btn' bindtap='outStock' hover-class='btn_hover'>
+      <image class='home-icon' src='../../icon/home_outbound.png'></image>
+      <view>出库管理</view>
+    </button>
+    <button class='btn' bindtap='allocation'>
+      <image class='home-icon' src='../../icon/home_transfer.png'></image>
+      <view>调拨管理</view>
+    </button>
+  </view>
+  <view class="home-section">
+    <button class='btn' bindtap="confirmReceive">
+      <image class='home-icon' src='../../icon/home_reward.png'></image>
+      <view>收货确认</view>
+    </button>
+    <button class='btn' bindtap='returnGoods'>
+      <image class='home-icon' src='../../icon/home_return.png'></image>
+      <view>退货登记</view>
+    </button>
+  </view>
+</view>
+<tabbar tabbar="{{tabbar}}"></tabbar>

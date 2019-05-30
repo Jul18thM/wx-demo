@@ -1,0 +1,19 @@
+<!--pages/message/message.wxml-->
+<view class='nav' style="height:{{customBar}}px">
+  <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}px;">
+    <view class='view' bindtap="return" >
+      <image class='allbgdimg' src='../../image/fxqwe.jpg' style="height:{{customBar}}px" ></image>
+    </view>
+  <van-nav-bar class='view' bindtap="return" title="消息 " left-arrow style="top:{{statusBar}}px" ></van-nav-bar> 
+  </view>
+</view>
+
+<view class='top panel_top'>
+  <view class='viewimg'>
+    <image class='images' src='../../image/miss.png'></image>
+    <text>暂无消息</text>
+  </view>
+</view>
+
+
+<tabbar tabbar="{{tabbar}}"></tabbar>
